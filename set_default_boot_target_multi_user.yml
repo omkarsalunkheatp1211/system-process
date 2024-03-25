@@ -1,0 +1,11 @@
+---
+- name: Change default runlevel target
+  hosts: web
+  become: true
+
+  tasks:
+    - name: default runlevel multi user target
+      file:
+        src: /usr/lib/systemd/system/multi-user.target
+        dest: /etc/systemd/system/default.target
+        state: link
